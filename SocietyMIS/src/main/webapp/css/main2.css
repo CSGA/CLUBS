@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* CSS Document */
+.grid{ font-weight:bold;}
+.header h3{color:#FFF; font-size:14px;}
+.container h1{
+	font-size: 24px;
+	color: #666;
+	text-align: left;
+}
+.center{
+	margin:50px 400px auto;
+	
+	
+}
+.wd{
+	width:100px;
+	
+}
+.fl{
+	float:left;
+}
+.fr{
+	float:right;
+}
+.ipt{
+	margin:10px auto;
+}
+.img{
+	width:20px;
+	height:20px;
+}
+td {text-align:center}
+.ts{
+	margin: 50px 800px auto 100px;
+}
