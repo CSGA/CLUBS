@@ -20,8 +20,7 @@
 <body class="easyui-layout">
 <!-- 头部标题 -->
 <div data-options="region:'north',border:false" style="height:60px; padding:5px; background:#F3F3F3"> 
-	<a href="www.solooo.net"><span class="northTitle">社联后台</span></a>
-    <span class="loginInfo">登录用户：admin&nbsp;&nbsp;姓名：管理员&nbsp;&nbsp;角色：系统管理员</span>
+	<center><p><font size="8">社联后台</font></p></center>
 </div>
 
 <!-- 左侧导航 -->
@@ -39,8 +38,8 @@
 <!-- 内容tabs -->
 <div id="center" data-options="region:'center'">
   <div id="tabs" class="easyui-tabs">
-    <div title="首页" style="padding:5px;display:block;" >
-      <p>欢迎进入社联后台系统：</p>
+    <div title="首页" style="padding:5px;display:block;vertical-align:middle;" >
+             <center><p><font size="15">欢迎进入社联后台系统!</font></p></center>
         
     </div>
   </div>

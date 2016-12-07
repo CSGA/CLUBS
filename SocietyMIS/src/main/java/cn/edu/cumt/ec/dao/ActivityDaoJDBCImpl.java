@@ -14,7 +14,7 @@ public class ActivityDaoJDBCImpl  implements ActivityDao{
 	@Override
 	public boolean add(Activity activity) {
 		// TODO Auto-generated method stub
-		return DbUtil.executeUpdate("insert into activity_inf values(?,?)",new Object[]{});		
+		return DbUtil.executeUpdate("insert into activity(`club_id`, `actname`, `acttime`, `actdesc`, `actlocation`) values(?,?,?,?,?)",new Object[]{activity.getClub_id(),activity.getActname(),activity.getActtime(),activity.getActdesc(),activity.getActlocation()});		
 	}
 
 	@Override
@@ -115,5 +115,54 @@ public class ActivityDaoJDBCImpl  implements ActivityDao{
 				}
 				return activity1;
 	}
+
+	
+	
+	
+	
+	
+	public List<Activity> getAllActivity() {
+		ResultSet rs=DbUtil.executeQuery("select * from activity where actstatus=?", new Object[]{"´ýÉóºË"});
+		List<Activity> activityList=new ArrayList<Activity>();
+		try{
+			while(rs.next()){
+				Activity activity=new Activity();
+				activity.setActivity_id(rs.getInt(1));
+				activity.setClub_id(rs.getInt(2));
+				activity.setActname(rs.getString(3));
+				activity.setActtime(rs.getString(4));
+				activity.setActdesc(rs.getString(5));
+				activity.setActlocation(rs.getString(6));
+				activity.setActstatus(rs.getString(7));
+				activityList.add(activity);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return activityList;
+	}
+	
+	public List<Activity> getPassActivity() {
+		ResultSet rs=DbUtil.executeQuery("select * from activity where actstatus=?", new Object[]{"ÉóºËÍ¨¹ý"});
+		List<Activity> activityList=new ArrayList<Activity>();
+		try{
+			while(rs.next()){
+				Activity activity=new Activity();
+				activity.setActivity_id(rs.getInt(1));
+				activity.setClub_id(rs.getInt(2));
+				activity.setActname(rs.getString(3));
+				activity.setActtime(rs.getString(4));
+				activity.setActdesc(rs.getString(5));
+				activity.setActlocation(rs.getString(6));
+				activity.setActstatus(rs.getString(7));
+				activityList.add(activity);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return activityList;
+	}
+	
+	
 
 }

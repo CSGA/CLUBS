@@ -7,13 +7,19 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import cn.edu.cumt.ec.dao.ActivityDaoJDBCImpl;
 import cn.edu.cumt.ec.entity.Activity;
+import cn.edu.cumt.ec.entity.Users;
 import cn.edu.cumt.ec.service.ActivityService;
+import cn.edu.cumt.ec.service.UsersService;
 
 
 
 public class UnionAction extends ActionSupport{
 	  private int club_id;
 	  private int activity_id;
+	  private String actname;
+	  private String acttime;
+	  private String actlocation;
+	  private String actdesc;
       public int getActivity_id() {
 		return activity_id;
 	}
@@ -27,8 +33,30 @@ public class UnionAction extends ActionSupport{
 		this.club_id = club_id;
 	}
 	
-	
-	
+	public String getActname() {
+		return actname;
+	}
+	public void setActname(String actname) {
+		this.actname = actname;
+	}
+	public String getActtime() {
+		return acttime;
+	}
+	public void setActtime(String acttime) {
+		this.acttime = acttime;
+	}
+	public String getActlocation() {
+		return actlocation;
+	}
+	public void setActlocation(String actlocation) {
+		this.actlocation = actlocation;
+	}
+	public String getActdesc() {
+		return actdesc;
+	}
+	public void setActdesc(String actdesc) {
+		this.actdesc = actdesc;
+	}
 	//社团展示    
 	public String clubshow() throws Exception{
 		ActivityService activityService=new ActivityService();
@@ -50,7 +78,7 @@ public class UnionAction extends ActionSupport{
 		Activity activity1=activityService.getById1(activity_id,club_id);
 		Activity activity2=activityService.getById(club_id);
 		ActionContext.getContext().getSession().put("activity", activity1);
-		ActionContext.getContext().getSession().put("activitys", activity2);
+		ActionContext.getContext().getSession().put("activity", activity2);
 	    return "activity3";	   
 	}
 	//社团详情
@@ -69,4 +97,20 @@ public class UnionAction extends ActionSupport{
 	//活动管理
 	//同意活动申请
 	//同意活动报名
+	
+//添加活动
+	public String addactivity() throws Exception{
+		 Activity activity=new Activity();
+		 activity.setClub_id(1);
+		 activity.setActname(actname);
+		 activity.setActtime(acttime);
+		 activity.setActdesc(actdesc);
+		 activity.setActlocation(actlocation);
+			 ActivityService a=new ActivityService();
+			 a.add(activity);
+			 return SUCCESS;
+			 
+	      }
+	
+
 }

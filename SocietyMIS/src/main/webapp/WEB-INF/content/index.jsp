@@ -55,7 +55,7 @@
 					</li>
 					<li class="denglu"><a href="login1.html">会员登录</a> 
 					<li class="denglu"><a href="login2.html">社团登录</a> 
-                    <li class="denglu"><a href="login3.html">社联登录</a> 
+                    <li class="denglu"><a href="unionindex">社联登录</a> 
                     
 					<li class="shu"></li>
 					<li class="shu"></li>

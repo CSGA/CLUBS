@@ -24,6 +24,12 @@ public class ActivityService {
 	public   List<Activity> getAll(){
 		return  activityDao.getAll();
 	}
+	public   List<Activity> getAllActivity(){
+		return  activityDao.getAllActivity();
+	}
+	public   List<Activity> getPassActivity(){
+		return  activityDao.getPassActivity();
+	}
 	public Activity getById(int club_id){
 		return activityDao.getById(club_id);
 	}

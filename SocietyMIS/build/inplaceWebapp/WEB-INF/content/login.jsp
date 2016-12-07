@@ -33,8 +33,10 @@ img{border:0;}
         <input name="students_password" placeholder="ÃÜÂë" type="text" value="" class="pw" />
         </div>
     </div>
+
     <div class="lg_foot">
-    <input type="submit" value="µÇÂ¼" class="bn" /></div>
+    <input type="submit" value="Ñ§ÉúµÇÂ¼" class="bn" /></div>
+
 </form>
 </div>
 

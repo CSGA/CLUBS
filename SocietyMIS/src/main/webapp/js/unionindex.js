@@ -27,10 +27,10 @@ var setting = {
 
 var zNodes =[
 	{ id:1, pId:0, name:"发布活动", open:true},
-	{ id:11, pId:1, name:"上传活动", file:"uploadactivity.html"},
+	{ id:11, pId:1, name:"上传活动", file:"uploadactivity"},
 	{ id:2, pId:0, name:"管理活动", open:true},
-	{ id:21, pId:2, name:"历史活动", file:"cansaixinxi.html"},
-	{ id:23, pId:2, name:"审核活动", file:"shenhexinxi.html"}
+	{ id:21, pId:2, name:"历史活动", file:"historyactivity"},
+	{ id:23, pId:2, name:"审核活动", file:"checkactivity"}
 ];
 
 $(function() {

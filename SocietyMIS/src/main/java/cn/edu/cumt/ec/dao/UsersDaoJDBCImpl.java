@@ -26,11 +26,6 @@ public class UsersDaoJDBCImpl implements UsersDao{
 				users1=new Users();
 				users1.setStudents_id(rs.getString(1));
 				users1.setStudents_password(rs.getString(3));
-				
-				/*ActionContext actionContext = ActionContext.getContext();
-				  @SuppressWarnings("rawtypes")
-				  Map session = actionContext.getSession();
-				  session.put("username",users1.getUsername());*/
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

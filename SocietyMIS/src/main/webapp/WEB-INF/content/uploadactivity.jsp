@@ -33,14 +33,14 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
 
     <!-- Begin Form -->
 
-    <form id="my-form">
+    <form id="my-form" action="union_addactivity">
 
-        <section name="上传社团信息">
+        <section name="上传活动信息">
 
-          <div><label>活动名称:</label><input id="pass" name="activity_name" type="text"/></div>
-          <div><label>活动日期:</label><input name="date" class="datepicker" data-ideal="date" type="text" placeholder="月/日/年"/></div>
-          <div><label>活动描述:</label><input id="file" name="file" multiple type="file"/></div>
-          <div><label>活动地址:</label><textarea id="member" name="address"></textarea></div>
+          <div><label>活动名称:</label><input id="name" name="actname" type="text"/></div>
+          <div><label>活动日期:</label><input name="acttime" class="datepicker" data-ideal="date" type="text" placeholder="月/日/年"/></div>
+          <div><label>活动描述:</label><textarea id="description" name="actdesc"></textarea></div>
+          <div><label>活动地址:</label><input id="location" name="actlocation" type="text"/></div>
         </section>
 
        
@@ -48,7 +48,7 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
       <div><hr/></div>
 
       <div>
-        <button type="submit">提交</button>
+        <button type="submit">提交活动申请</button>
         <button id="reset" type="button">重置</button>
       </div>
 

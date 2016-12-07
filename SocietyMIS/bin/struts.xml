@@ -4,16 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 	<constant name="conststruts.devMode" value="true"/>
-	<!-- Struts2的所有Action都需位于package下 -->
+
 	<package name="lee" extends="struts-default">
-		<!-- 定义名为login的Action，其实现类为LoginAction类 -->
-		<action name="query" class="cn.edu.cumt.ec.action.News">
-			<!-- 处理结果返回error，对应/WEB-INF/content/error.jsp视图资源 -->
-			<result name="error">/WEB-INF/content/error.jsp</result>
-			<!-- 处理结果返回success，对应/WEB-INF/content/welcome.jsp视图资源 -->
-			<result>/WEB-INF/content/welcome.jsp</result>
-		</action>
-		
+
 		<action name="user_*" class="cn.edu.cumt.ec.action.UsersAction" method="{1}">
 			<result name="error">/WEB-INF/content/error.jsp</result>
 			<result name="login">/WEB-INF/content/index.jsp</result>
@@ -31,8 +24,33 @@
 		<result name="activity3">/WEB-INF/content/singleactivity.jsp</result>
 		</action>
 		
+		<action name="union_*" class="cn.edu.cumt.ec.action.UnionAction" method="{1}">
+        <result>/WEB-INF/content/uploadactivity.jsp</result>
+		</action>
+		
 		<action name="*">
 			<result>/WEB-INF/content/{1}.jsp</result>
 		</action>
 	</package>
+	
+	
+	<package name="json" namespace="/jsd" extends="json-default">
+    	<action name="getAllActivity" class="cn.edu.cumt.ec.action.JsonAction" method="getAllActivity">
+    		<result name="success" type="json" >
+    			<param name="noCathe">true</param>
+    			<param name="contentType">text/html</param>			
+    		</result>
+    	</action>
+    	<action name="getPassActivity" class="cn.edu.cumt.ec.action.JsonAction" method="getPassActivity">
+    		<result name="success" type="json" >
+    			<param name="noCathe">true</param>
+    			<param name="contentType">text/html</param>			
+    		</result>
+    	</action>
+    	
+    </package>
+	
+	
+	
+
 </struts>

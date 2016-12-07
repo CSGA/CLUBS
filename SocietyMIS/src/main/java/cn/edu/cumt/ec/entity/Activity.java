@@ -11,8 +11,7 @@ public class Activity {
     private int apply_id;
     private int studends_id;
     private String applytime;
-    private String check_id;
-    private String checkstatus;
+    private String actstatus;
     private int joinact_id;
     private int students_id;
     private String joinstatus;
@@ -94,17 +93,11 @@ public class Activity {
 	public void setApplytime(String applytime) {
 		this.applytime = applytime;
 	}
-	public String getCheck_id() {
-		return check_id;
+	public String getActstatus() {
+		return actstatus;
 	}
-	public void setCheck_id(String check_id) {
-		this.check_id = check_id;
-	}
-	public String getCheckstatus() {
-		return checkstatus;
-	}
-	public void setCheckstatus(String checkstatus) {
-		this.checkstatus = checkstatus;
+	public void setActstatus(String actstatus) {
+		this.actstatus = actstatus;
 	}
 	public int getJoinact_id() {
 		return joinact_id;
