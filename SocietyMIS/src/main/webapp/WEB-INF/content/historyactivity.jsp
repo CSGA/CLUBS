@@ -90,9 +90,7 @@ function domresize(){
   <!-- 数据表格区域 -->
   <table id="tt1" style="table-layout:fixed;" ></table>
   <!-- 表格顶部工具按钮 -->
-  <div id="tt_btn">
-      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
-   </div>
+
 </div>
 </body>
 </html>
