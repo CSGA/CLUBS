@@ -24,9 +24,14 @@
 			<div class="header-box">
 				<ul class="header-right">
                     <li class="my bj">
-						<a href="#">注册</a>
+						<a href="#">
+						${session.user.students_id} 
+						<%@page import="cn.edu.cumt.ec.entity.Users"%> 
+						<% Users user= (Users)session.getAttribute("user");%>
+						<%=user.getStudents_id()%>
+						</a>
 						<i class="ci-right ">
-							<s class="jt">◇</s>
+							<s class="jt">◇</s> 
 						</i>
 						<div class="my1">
                             <img src="./images/no-img_mid_.jpg">
@@ -46,16 +51,30 @@
 						<div class="my1">
                             <img src="./images/no-img_mid_.jpg">
 								<div class="my3">
-									<h3 class="neirong2"><a href="shetuan.html">报名加入社团</a></h3>
-									<h3 class="neirong2"><a href="huodong.html">报名参加活动</a></h3>
+									<h3 class="neirong2"><a href="club_clubshow">报名加入社团</a></h3>
+									<h3 class="neirong2"><a href="activity_activityshow">报名参加活动</a></h3>
 									
 								</div>
 							
 						</div>
 					</li>
-					<li class="denglu"><a href="login1.html">会员登录</a> 
-					<li class="denglu"><a href="login2.html">社团登录</a> 
-                    <li class="denglu"><a href="unionindex">社联登录</a> 
+					 <li class="my bj">
+						<a href="#">个人空间</a>
+						<i class="ci-right ">
+							<s class="jt"></s>
+						</i>
+						<div class="my1">
+                            <img src="./images/no-img_mid_.jpg">
+								<div class="my3">
+									<h3 class="neirong2"><a href="club_myclub?students_id=${session.user.students_id}">我的社团</a></h3>
+									<h3 class="neirong2"><a href="activity_activityshow">我的活动</a></h3>
+									<h3 class="neirong2"><a href="club_clubshow">我的信息</a></h3>
+								</div>
+							
+						</div>
+					</li>
+					<li class="denglu"><a href="backlogin">社团登录</a> 
+                    <li class="denglu"><a href="shetuanxinxi">所有社团联系方式</a> 
                     
 					<li class="shu"></li>
 					<li class="shu"></li>

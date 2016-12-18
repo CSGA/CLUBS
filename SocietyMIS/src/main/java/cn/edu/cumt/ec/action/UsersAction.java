@@ -1,12 +1,32 @@
 package cn.edu.cumt.ec.action;
 
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage.RecipientType;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import cn.edu.cumt.ec.entity.Users;
+import cn.edu.cumt.ec.service.ActivityService;
 import cn.edu.cumt.ec.service.UsersService;
 
 public class UsersAction extends ActionSupport{
+	private int club_id;
+	public int getClub_id() {
+		return club_id;
+	}
+	public void setClub_id(int club_id) {
+		this.club_id = club_id;
+	}
 	private String students_id;
 	private String students_name;
     private String students_password;
@@ -15,6 +35,7 @@ public class UsersAction extends ActionSupport{
     private String students_class;
     private String students_email;
     private String students_tel;
+    private String activity_id;
     public String getStudents_id() {
 		return students_id;
 	}
@@ -74,7 +95,7 @@ public class UsersAction extends ActionSupport{
 //					users.setStudents_name(students_name);
 					UsersService usersservice=new UsersService();
 			           if(usersservice.Query(users)==true){
-//			        	   ActionContext.getContext().getSession().put("username",students_name);
+			        	   ActionContext.getContext().getSession().put("user",users);
 			                  return "login";
 			                 
 			             }else{
@@ -104,4 +125,72 @@ public class UsersAction extends ActionSupport{
 					 return "errors";
 				 }
 			}
+			//通知报名社团学生已报名成功
+			 public String tellmen() throws Exception{
+					UsersService a=new UsersService();
+					List<Users> users= a.getemail(club_id);
+					Users user = null;
+					for(int i=0;i<users.size();i++)
+					 try{
+							Properties props = new Properties();
+							props.setProperty("mail.smtp.auth", "true");
+							props.setProperty("mail.transport.protocol", "smtp");
+							props.setProperty("mail.host", "smtp.163.com");
+							Session session = Session.getInstance(props, new Authenticator() {
+								protected PasswordAuthentication getPasswordAuthentication() {
+									return new PasswordAuthentication("18361267929", "326womendeai");
+								}
+							});
+							session.setDebug(true);
+							Message msg = new MimeMessage(session);
+							msg.setFrom(new InternetAddress("18361267929@163.com"));
+							msg.setSubject("报名活动审核结果通知");
+							user = new Users();
+							user = users.get(i);
+							msg.setRecipients(RecipientType.TO,
+									InternetAddress.parse(user.getStudents_email()));
+							msg.setContent("<span>"+"亲爱的同学"+"<br />"+"&emsp;&emsp;您好！<br />"
+									+ "&emsp;&emsp;您已经加入该活动<br />"
+											+ "当前审核结果为：同意"+"</span>","text/html;charset=gbk");
+							Transport.send(msg);		
+							
+						}catch (Exception e) {    
+				            e.printStackTrace();    
+				        }
+					return "tellmen";
+				 }
+			//通知报名社团学生已报名成功
+			 public String joinstu() throws Exception{
+					UsersService a=new UsersService();
+					List<Users> users= a.getemail1(activity_id);
+					Users user = null;
+					for(int i=0;i<users.size();i++)
+					 try{
+							Properties props = new Properties();
+							props.setProperty("mail.smtp.auth", "true");
+							props.setProperty("mail.transport.protocol", "smtp");
+							props.setProperty("mail.host", "smtp.163.com");
+							Session session = Session.getInstance(props, new Authenticator() {
+								protected PasswordAuthentication getPasswordAuthentication() {
+									return new PasswordAuthentication("18361267929", "326womendeai");
+								}
+							});
+							session.setDebug(true);
+							Message msg = new MimeMessage(session);
+							msg.setFrom(new InternetAddress("18361267929@163.com"));
+							msg.setSubject("报名社团审核结果通知");
+							user = new Users();
+							user = users.get(i);
+							msg.setRecipients(RecipientType.TO,
+									InternetAddress.parse(user.getStudents_email()));
+							msg.setContent("<span>"+"亲爱的同学"+"<br />"+"&emsp;&emsp;您好！<br />"
+									+ "&emsp;&emsp;您已经加入该社团<br />"
+											+ "当前审核结果为：同意你加入本社团"+"</span>","text/html;charset=gbk");
+							Transport.send(msg);		
+							
+						}catch (Exception e) {    
+				            e.printStackTrace();    
+				        }
+					return "tellmen1";
+				 }
 }

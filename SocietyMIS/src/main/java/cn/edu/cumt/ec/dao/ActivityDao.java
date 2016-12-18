@@ -15,9 +15,11 @@ public interface ActivityDao {
 
 	List<Activity> getAll();
 
-	List<Activity> getAllActivity();
-	
-	List<Activity> getPassActivity();
-	
 	boolean Query(Activity activity);
+
+
+
+	
+
+	
 }

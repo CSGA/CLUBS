@@ -14,25 +14,30 @@
 <script type="text/javascript" src="js/common.js"></script>
 <script>
 
+
 $(function(){
+// 	var selectrow=$('#tt').datagrid("getselected");
 	$("#tt").datagrid({
 		height:$("#body").height()-$('#search_area').height()-5,
 		width:$("#body").width(),
 		idField:'userId',
 		//data: data,
-		url:"UnionAction",  
+// 	    $.post()
+		url:"jsd/getapplystudents",  
 		singleSelect:true, 
 		nowrap:true,
 		fitColumns:true,
 		rownumbers:true,
 		showPageList:false,
 		columns:[[
-    
-			{field:'name',title:'姓名',width:100,halign:"center", align:"left"},
-			{field:'tele',title:'手机号',width:100,halign:"center", align:"left"},
-            {field:'students_id',title:'学号',width:100,halign:"center", align:"left"},
-			{field:'major',title:'学院',width:100,halign:"center", align:"left"},
-			{field:'status',title:'参赛状态',width:100,halign:"center", align:"left"}    
+      {field:'students_name',title:'姓名',width:100,halign:"center", align:"left"},
+      {field:'students_sex',title:'性别',width:100,halign:"center", align:"left"},
+      {field:'students_id',title:'学号',width:100,halign:"center", align:"left"},
+      {field:'students_tel',title:'手机号',width:100,halign:"center", align:"left"},
+      {field:'students_school',title:'学院',width:100,halign:"center", align:"left"},
+      {field:'students_class',title:'班级',width:100,halign:"center", align:"left"},
+      {field:'students_email',title:'邮箱',width:100,halign:"center", align:"left"},
+           
 		]],
 		toolbar:'#tt_btn',  
         pagination:true,
@@ -40,6 +45,7 @@ $(function(){
 			viewDetail(rowData.userId);
 		}
 	});
+	
 	
 	//新增弹出框
 	$("#save").on("click", function(){
@@ -82,7 +88,11 @@ function domresize(){
  
   <!-- 数据表格区域 -->
   <table id="tt" style="table-layout:fixed;" ></table>
-
+  <!-- 表格顶部工具按钮 -->
+  <div id="tt_btn">
+      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">删除</a>
+        <a href="user_joinstu"  id="see" class="easyui-linkbutton" iconCls="icon-remove" plain="true">通知活动报名学生</a>
+   </div>
 </div>
 </body>
 </html>

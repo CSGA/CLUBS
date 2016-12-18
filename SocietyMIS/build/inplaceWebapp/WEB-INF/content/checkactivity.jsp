@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ÉóºË»î¶¯</title>
+<title>å®¡æ ¸æ´»åŠ¨</title>
 <link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/icon.css" />
@@ -28,54 +28,67 @@ $(function(){
 		rownumbers:true,
 		showPageList:false,
 		columns:[[
-					{field:'activity_id',title:'»î¶¯ID'},
-					{field:'club_id',title:'ÉçÍÅID'},
-		            {field:'actname',title:'»î¶¯Ãû³Æ'},
-					{field:'acttime',title:'»î¶¯Ê±¼ä'},
-					{field:'actlocation',title:'»î¶¯µØµã'},
-					{field:'actstatus',title:'»î¶¯×´Ì¬'},
-					{field:'actdesc',title:'»î¶¯ÃèÊö'} 
+					{field:'activity_id',title:'æ´»åŠ¨ID'},
+					{field:'club_id',title:'ç¤¾å›¢ID'},
+		            {field:'actname',title:'æ´»åŠ¨åç§°'},
+					{field:'acttime',title:'æ´»åŠ¨æ—¶é—´'},
+					{field:'actlocation',title:'æ´»åŠ¨åœ°ç‚¹'},
+					{field:'actstatus',title:'æ´»åŠ¨çŠ¶æ€'},
+					{field:'actdesc',title:'æ´»åŠ¨æè¿°'} 
            
-		]],
-		toolbar:'#tt_btn',  
+		]],  
         pagination:true,
 		onDblClickRow:function(rowIndex, rowData){
-			viewDetail(rowData.userId);
+			viewDetail(rowData.activity_id);
 		}
 	});
 
-	
-	//ĞÂÔöµ¯³ö¿ò
-	$("#save").on("click", function(){
-		$parent("#parent_win").window({
-			width:274,
-			height:225,
-			href:'user/addUser.html',
-			title:'ĞÂÔö»î¶¯'
-		});
+	$('#changewin').window({
+		width:300,
+		height:480,
+		title:'å®¡æ ¸æ´»åŠ¨',
+		collapsible:false,
+		minimizable:true,
+	    maximizable:false, 
+	    closable:true,
+	    draggable:true,
+	    closed:true		
 	});
-	//ĞŞ¸Ä
-	$("#update").on("click", function(){
-		$parent.messager.alert("ÌáÊ¾","update", "info");
-	});
-	//É¾³ı
-	$("#delete").on("click", function(){
-		$parent.messager.alert("ÌáÊ¾","delete", "info");
-	});
+
 })
 
 
 
 
-function viewDetail(date, id){
-	$parent.messager.alert("ÌáÊ¾","²éÑ¯ÏêÏ¸", "info");
+function viewDetail(activity_id){
+	$('#changewin').window('open');
+	var selectedRow = $('#tt').datagrid('getSelected');
+	$('#changeform').form('load',{
+		activity_id:selectedRow.activity_id,
+		club_id:selectedRow.club_id,
+		actname:selectedRow.actname,
+		acttime:selectedRow.acttime,
+		actlocation:selectedRow.actlocation,
+		actstatus:selectedRow.actstatus,
+		actdesc:selectedRow.actdesc
+	})
 }
 
-//¼àÌı´°¿Ú´óĞ¡±ä»¯
-window.onresize = function(){
-	setTimeout(domresize,300);
-};
-//¸Ä±ä±í¸ñ¿í¸ß
+
+//é€šçŸ¥å®¡æ ¸ç»“æœ
+function changeco(){
+	$('#changeform').form('submit',{
+		url:'jsd/checkActivity.action',
+		success: function(){
+				$('#changewin').window('close');		
+				$('#tt').datagrid('reload');		
+				alert("å®¡æ ¸æˆåŠŸï¼å®¡æ ¸ç»“æœå·²å‘é€è‡³è¯¥ç¤¾å›¢å…¬é‚®ï¼")
+		}
+	});
+}
+
+
+//æ”¹å˜è¡¨æ ¼å®½é«˜
 function domresize(){
 	$('#tt').datagrid('resize',{  
 		height:$("#body").height()-$('#search_area').height()-5,
@@ -87,12 +100,51 @@ function domresize(){
 <body class="easyui-layout" >
 <div id="body" region="center" > 
  
-  <!-- Êı¾İ±í¸ñÇøÓò -->
+  <!-- æ•°æ®è¡¨æ ¼åŒºåŸŸ -->
   <table id="tt" style="table-layout:fixed;" ></table>
-  <!-- ±í¸ñ¶¥²¿¹¤¾ß°´Å¥ -->
-  <div id="tt_btn">
-      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">É¾³ı</a>
-   </div>
+  <!-- è¡¨æ ¼é¡¶éƒ¨å·¥å…·æŒ‰é’® -->
+
+       <div id="changewin">
+		<form id="changeform" method="post" action="jsd/checkActivity.action">
+		<br /><br />
+			<div>
+				<label for="activity_id">æ´»&nbsp;&nbsp;åŠ¨&nbsp;&nbsp;idï¼š</label>
+				<input id="activity_id" name="activity_id"/>
+			</div><br />
+			<div>
+				<label for="club_id">ç¤¾&nbsp;&nbsp;å›¢&nbsp;&nbsp;idï¼š</label>
+				<input id="club_id" name="club_id"/>
+			</div><br />
+			<div>
+				<label for="actname">æ´»åŠ¨åç§°ï¼š</label>
+				<input id="actname" name="actname"/>
+			</div><br />
+			<div>
+				<label for="acttime">æ´»åŠ¨æ—¶é—´ï¼š</label>
+				<input id="acttime" name="acttime" disabled="true"/>
+			</div><br />
+			<div>
+				<label for="actlocation">æ´»åŠ¨åœ°ç‚¹ï¼š</label>
+				<input id="actlocation" name="actlocation" disabled="true"/>
+			</div><br />
+			<div>
+				<label for="actdesc">æ´»åŠ¨æè¿°ï¼š</label>
+				<textarea id="actdesc" name="actdesc" disabled="true"></textarea>
+			</div><br />
+			<hr />
+			<div>
+				<label for="actstatus">æ´»åŠ¨çŠ¶æ€ï¼š</label>
+				<input type="radio" name="actstatus" value="å®¡æ ¸é€šè¿‡"/>å®¡æ ¸é€šè¿‡
+				<input type="radio" name="actstatus" value="å®¡æ ¸ä¸é€šè¿‡"/>å®¡æ ¸ä¸é€šè¿‡
+			</div><br />
+			<div>
+				<label for="advice">å®¡æ‰¹æ„è§ï¼š</label>
+				<textarea id="advice" name="advice"></textarea>
+			</div><br />
+			<a id="changecobtn" class="easyui-linkbutton" icon="icon-ok" href="javascript:void(0)" onclick="changeco()">é€šçŸ¥ç»“æœ</a> 
+    		<a id="cbtnCancel" class="easyui-linkbutton" icon="icon-cancel" href="javascript:void(0)">å–æ¶ˆ</a> 
+		</form>
+	</div>
 </div>
 </body>
 </html>

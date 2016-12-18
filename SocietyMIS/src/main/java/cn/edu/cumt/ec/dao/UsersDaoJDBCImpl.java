@@ -26,6 +26,11 @@ public class UsersDaoJDBCImpl implements UsersDao{
 				users1=new Users();
 				users1.setStudents_id(rs.getString(1));
 				users1.setStudents_password(rs.getString(3));
+				
+				/*ActionContext actionContext = ActionContext.getContext();
+				  @SuppressWarnings("rawtypes")
+				  Map session = actionContext.getSession();
+				  session.put("username",users1.getUsername());*/
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -83,7 +88,36 @@ public class UsersDaoJDBCImpl implements UsersDao{
 		}
 		return users;
 	}
-
+	public List<Users> getemail(int club_id) {
+		// TODO Auto-generated method stub
+				ResultSet rs=DbUtil.executeQuery("select * from students where students.students_id in (select distinct apply.students_id from apply where club_id=?);", new Object[]{club_id});
+				List<Users> usersList=new ArrayList<Users>();
+				try{
+					while(rs.next()){
+						Users users= new Users();
+						users.setStudents_email(rs.getString(8));
+						usersList.add(users);
+					}
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
+				return usersList;
+			}
+	public List<Users> getemail1(String activity_id) {
+		// TODO Auto-generated method stub
+		ResultSet rs=DbUtil.executeQuery("select * from students where students.students_id in (select distinct joinact.students_id from joinact where activity_id=?);", new Object[]{7});
+		List<Users> usersList=new ArrayList<Users>();
+		try{
+			while(rs.next()){
+				Users users= new Users();
+				users.setStudents_email(rs.getString(8));
+				usersList.add(users);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		return usersList;
+	}
 
 
 }

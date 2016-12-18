@@ -165,16 +165,13 @@
 						<a href=''><p class="fh5co-category">十佳歌手</p></a>
 						<h3 class="heading">No. 2</h3>
 					</div>
-
-					<div class="clearfix visible-sm-block visible-xs-block"></div>
-
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box"> 
 						<figure><img class="img-responsive" src="images/work_3.jpg" alt="Free HTML5 Template"></figure>
 						<a href=''><p class="fh5co-category">五月采风</p></a>
 						<h3 class="heading">No. 3</h3>
 					</div>
 
-					<div class="clearfix visible-md-block visible-lg-block"></div>
+					
 
 					<div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box">
 						<figure><img class="img-responsive" src="images/work_4.jpg" alt="Free HTML5 Template"></figure>

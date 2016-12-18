@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登录平台</title>
+<title>学生登录平台</title>
 
 <style type="text/css">
 *{padding:0px;margin:0px;}
@@ -30,13 +30,11 @@ img{border:0;}
         <div class="lg_m_1">
         
         <input name="students_id" placeholder="学号" value="" class="ur" />
-        <input name="students_password" placeholder="密码" type="text" value="" class="pw" />
+        <input name="students_password" placeholder="密码" type="password" value="" class="pw" />
         </div>
     </div>
-
     <div class="lg_foot">
-    <input type="submit" value="学生登录" class="bn" /></div>
-
+    <input type="submit" value="登录" class="bn" /></div>
 </form>
 </div>
 

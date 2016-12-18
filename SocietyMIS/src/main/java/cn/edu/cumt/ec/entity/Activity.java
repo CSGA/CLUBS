@@ -1,5 +1,7 @@
 package cn.edu.cumt.ec.entity;
 
+import java.util.Collection;
+
 public class Activity {
     private  int  activity_id;
     private int club_id;
@@ -9,18 +11,32 @@ public class Activity {
     private String actdesc;
     private String actlocation;
     private int apply_id;
-    private int studends_id;
+    private String students_id;
     private String applytime;
     private String actstatus;
     private int joinact_id;
-    private int students_id;
+	private String clubpassword;
     private String joinstatus;
     private String settime;
     private String clubdesc;
     private String clubimage;
     private String clubrule;
-   
-    public String getSettime() {
+    private String students_class;
+    private String students_email;
+    private String students_tel;
+    private String students_school;
+    private String students_name;
+    private String students_sex;
+    private String clubemail;
+    private String clubman;
+    private String clubmantel;
+    public String getClubemail() {
+		return clubemail;
+	}
+	public void setClubemail(String clubemail) {
+		this.clubemail = clubemail;
+	}
+	public String getSettime() {
 		return settime;
 	}
 	public void setSettime(String settime) {
@@ -81,11 +97,11 @@ public class Activity {
 	public void setApply_id(int apply_id) {
 		this.apply_id = apply_id;
 	}
-	public int getStudends_id() {
-		return studends_id;
+	public String getStudents_id() {
+		return students_id;
 	}
-	public void setStudends_id(int studends_id) {
-		this.studends_id = studends_id;
+	public void setStudents_id(String students_id) {
+		this.students_id = students_id;
 	}
 	public String getApplytime() {
 		return applytime;
@@ -93,6 +109,7 @@ public class Activity {
 	public void setApplytime(String applytime) {
 		this.applytime = applytime;
 	}
+	
 	public String getActstatus() {
 		return actstatus;
 	}
@@ -105,12 +122,7 @@ public class Activity {
 	public void setJoinact_id(int joinact_id) {
 		this.joinact_id = joinact_id;
 	}
-	public int getStudents_id() {
-		return students_id;
-	}
-	public void setStudents_id(int students_id) {
-		this.students_id = students_id;
-	}
+	
 	public String getJoinstatus() {
 		return joinstatus;
 	}
@@ -129,6 +141,63 @@ public class Activity {
 	public void setClub_id(int club_id) {
 		this.club_id = club_id;
 	}
+	public String getClubpassword() {
+		return clubpassword;
+	}
+	public void setClubpassword(String clubpassword) {
+		this.clubpassword = clubpassword;
+	}
+	
+	public String getStudents_tel() {
+		return students_tel;
+	}
+	public void setStudents_tel(String students_tel) {
+		this.students_tel = students_tel;
+	}
+	public String getStudents_email() {
+		return students_email;
+	}
+	public void setStudents_email(String students_email) {
+		this.students_email = students_email;
+	}
+	public String getStudents_class() {
+		return students_class;
+	}
+	public void setStudents_class(String students_class) {
+		this.students_class = students_class;
+	}
+	public String getStudents_school() {
+		return students_school;
+	}
+	public void setStudents_school(String students_school) {
+		this.students_school = students_school;
+	}
+	public String getStudents_name() {
+		return students_name;
+	}
+	public void setStudents_name(String students_name) {
+		this.students_name = students_name;
+	}
+	public String getStudents_sex() {
+		return students_sex;
+	}
+	public void setStudents_sex(String students_sex) {
+		this.students_sex = students_sex;
+	}
+	public String getClubmantel() {
+		return clubmantel;
+	}
+	public void setClubmantel(String clubmantel) {
+		this.clubmantel = clubmantel;
+	}
+	public String getClubman() {
+		return clubman;
+	}
+	public void setClubman(String clubman) {
+		this.clubman = clubman;
+	}
+	
+	
 	
     
 }

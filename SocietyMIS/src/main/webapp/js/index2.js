@@ -27,14 +27,11 @@ var setting = {
 
 var zNodes =[
 	{ id:1, pId:0, name:"活动管理", open:true},
-	{ id:11, pId:1, name:"上传活动", file:"huodong1"},
-	{ id:12, pId:1, name:"查看参赛信息", file:"cansaixinxi.html"},
-	{ id:13, pId:1, name:"消息通知", file:"xiaoxitongzhi.html"},
-	{ id:14, pId:1, name:"历史活动", file:"lishihuodong.html"},
+	{ id:14, pId:1, name:"历史活动", file:"lishihuodong"},
 	{ id:2, pId:0, name:"社团管理", open:true},
-	{ id:21, pId:2, name:"管理社团信息", file:"guanlishetuan.html"},
+	{ id:21, pId:2, name:"管理社团信息", file:"guanlishetuan"},
 	{ id:3, pId:0, name:"会员管理", open:true},
-	{ id:31, pId:3, name:"管理会员", file:"guanlihuiyuan.html"},
+	{ id:31, pId:3, name:"管理会员", file:"guanlihuiyuan"},
 	
 ];
 

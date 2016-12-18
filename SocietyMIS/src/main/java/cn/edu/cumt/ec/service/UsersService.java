@@ -31,4 +31,12 @@ public class UsersService {
 		public boolean Query(Users users){
 			return usersDao.Query(users);
 		}
+		public List<Users> getemail(int club_id) {
+			// TODO Auto-generated method stub
+			return (List<Users>) usersDao.getemail(club_id);	
+			}
+		public List<Users> getemail1(String activity_id) {
+			// TODO Auto-generated method stub
+			return (List<Users>) usersDao.getemail1(activity_id);
+		}
 }

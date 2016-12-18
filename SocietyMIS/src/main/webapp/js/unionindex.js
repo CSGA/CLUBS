@@ -30,7 +30,9 @@ var zNodes =[
 	{ id:11, pId:1, name:"上传活动", file:"uploadactivity"},
 	{ id:2, pId:0, name:"管理活动", open:true},
 	{ id:21, pId:2, name:"历史活动", file:"historyactivity"},
-	{ id:23, pId:2, name:"审核活动", file:"checkactivity"}
+	{ id:23, pId:2, name:"审核活动", file:"checkactivity"},
+	{ id:3, pId:0, name:"社团管理", open:true},
+	{ id:24, pId:3, name:"社团一览", file:"guanlishetuan"}
 ];
 
 $(function() {

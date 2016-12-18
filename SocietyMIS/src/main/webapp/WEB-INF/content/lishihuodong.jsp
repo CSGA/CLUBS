@@ -1,10 +1,10 @@
-ï»¿<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
+<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>å†å²æ´»åŠ¨</title>
+<title>ÀúÊ·»î¶¯</title>
 <link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/icon.css" />
@@ -20,20 +20,20 @@ $(function(){
 		width:$("#body").width(),
 		idField:'userId',
 		//data: data,
-		url:"datagrid.json",  
+		url:"jsd/club_showactivity?club_id=${session.club.club_id}",  
 		singleSelect:true, 
 		nowrap:true,
 		fitColumns:true,
 		rownumbers:true,
 		showPageList:false,
 		columns:[[
-			{field:'activities_id',title:'æ´»åŠ¨ID',width:100,halign:"center", align:"left"},
-			{field:'clubs_id',title:'ç¤¾å›¢ID',width:100,halign:"center", align:"left"},
-            {field:'activities_name',title:'æ´»åŠ¨åç§°',width:100,halign:"center", align:"left"},
-			{field:'activities_time',title:'æ´»åŠ¨æ—¶é—´',width:100,halign:"center", align:"left"},
-			{field:'activities_place',title:'æ´»åŠ¨åœ°ç‚¹',width:100,halign:"center", align:"left"},
-            {field:'activities_description',title:'æ´»åŠ¨æè¿°ï¼ˆè§„åˆ™ï¼‰',width:100,halign:"center", align:"left"},
-             {field:'activities',title:'æ´»åŠ¨çŠ¶æ€',width:100,halign:"center", align:"left"}
+			{field:'activity_id',title:'»î¶¯ID',width:100,halign:"center", align:"left"},
+			{field:'club_id',title:'ÉçÍÅID',width:100,halign:"center", align:"left"},
+            {field:'actname',title:'»î¶¯Ãû³Æ',width:100,halign:"center", align:"left"},
+			{field:'acttime',title:'»î¶¯Ê±¼ä',width:100,halign:"center", align:"left"},
+			{field:'actlocation',title:'»î¶¯µØµã',width:100,halign:"center", align:"left"},
+            {field:'actdesc',title:'»î¶¯ÃèÊö£¨¹æÔò£©',width:100,halign:"center", align:"left"},
+             {field:'actstatus',title:'»î¶¯×´Ì¬',width:100,halign:"center", align:"left"}
            
 		]],
 		toolbar:'#tt_btn',  
@@ -43,51 +43,70 @@ $(function(){
 		}
 	});
 	
-	//æ–°å¢å¼¹å‡ºæ¡†
+	//ĞÂÔöµ¯³ö¿ò
 	$("#save").on("click", function(){
 		$parent("#parent_win").window({
 			width:274,
 			height:225,
 			href:'user/addUser.html',
-			title:'æ–°å¢æ´»åŠ¨'
+			title:'ĞÂÔö»î¶¯'
 		});
 	});
-	//ä¿®æ”¹
+	//ĞŞ¸Ä
 	$("#update").on("click", function(){
-		$parent.messager.alert("æç¤º","update", "info");
+		$parent.messager.alert("ÌáÊ¾","update", "info");
 	});
-	//åˆ é™¤
+	//É¾³ı
 	$("#delete").on("click", function(){
-		$parent.messager.alert("æç¤º","delete", "info");
+		$parent.messager.alert("ÌáÊ¾","delete", "info");
 	});
+
+// $("#seestu").linkbutton({
+// 	onClick:function(){
+// 	var selectrow=$('#tt').datagrid("getSelected");
+// 	$.post("jsd/",{students_id:selectedRow.students_id};
+// 	}
+// 	}
+// )
+
+
+
+	
 })
 
 function viewDetail(date, id){
-	$parent.messager.alert("æç¤º","æŸ¥è¯¢è¯¦ç»†", "info");
+	$parent.messager.alert("ÌáÊ¾","²éÑ¯ÏêÏ¸", "info");
 }
-
-//ç›‘å¬çª—å£å¤§å°å˜åŒ–
+function viewDetail(activity_id){
+	$('#see').window('cansaixinxi');
+	var selectedRow = $('#tt').datagrid('getSelected');
+}
+//¼àÌı´°¿Ú´óĞ¡±ä»¯
 window.onresize = function(){
 	setTimeout(domresize,300);
 };
-//æ”¹å˜è¡¨æ ¼å®½é«˜
+//¸Ä±ä±í¸ñ¿í¸ß
 function domresize(){
 	$('#tt').datagrid('resize',{  
 		height:$("#body").height()-$('#search_area').height()-5,
 		width:$("#body").width()
 	});
 }
+
 </script>
 </head>
 <body class="easyui-layout" >
 <div id="body" region="center" > 
  
-  <!-- æ•°æ®è¡¨æ ¼åŒºåŸŸ -->
+  <!-- Êı¾İ±í¸ñÇøÓò -->
   <table id="tt" style="table-layout:fixed;" ></table>
-  <!-- è¡¨æ ¼é¡¶éƒ¨å·¥å…·æŒ‰é’® -->
+  <!-- ±í¸ñ¶¥²¿¹¤¾ß°´Å¥ -->
   <div id="tt_btn">
      
-      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">åˆ é™¤</a>
+     
+      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">É¾³ı</a>
+      <a href="addActivity"  id="seestu" class="easyui-linkbutton" iconCls="icon-remove" plain="true">Ìí¼Ó»î¶¯</a>
+      <a href="cansaixinxi"  id="see" class="easyui-linkbutton" iconCls="icon-remove" plain="true">²é¿´»î¶¯±¨ÃûÃûµ¥</a>
    </div>
 </div>
 </body>

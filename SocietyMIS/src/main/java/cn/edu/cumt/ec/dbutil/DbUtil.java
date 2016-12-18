@@ -23,7 +23,7 @@ public class DbUtil {
 			dataSource.setDriverClass("com.mysql.jdbc.Driver");
 			dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/clubs");
 			dataSource.setUser("root");
-			dataSource.setPassword("csg123");
+			dataSource.setPassword("123456");
 			dataSource.setInitialPoolSize(50);
 			dataSource.setMaxPoolSize(1000);
 			dataSource.setMaxIdleTime(10000);

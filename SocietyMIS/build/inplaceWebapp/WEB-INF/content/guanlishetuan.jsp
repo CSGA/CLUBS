@@ -1,10 +1,10 @@
-ï»¿<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
+<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ç®¡ç†ç¤¾å›¢</title>
+<title>¹ÜÀíÉçÍÅ</title>
 <link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/icon.css" />
@@ -20,19 +20,20 @@ $(function(){
 		width:$("#body").width(),
 		idField:'userId',
 		//data: data,
-		url:"datagrid.json",  
+		url:"jsd/manageshetuan",  
 		singleSelect:true, 
 		nowrap:true,
 		fitColumns:true,
 		rownumbers:true,
 		showPageList:false,
 		columns:[[
-			
-            {field:'activities_name',title:'ç¤¾å›¢åç§°',width:100,halign:"center", align:"left"},
-			{field:'activities_time',title:'ç¤¾å›¢æˆç«‹æ—¶é—´æ—¶é—´',width:100,halign:"center", align:"left"},
-			{field:'activities_place',title:'ç¤¾å›¢æè¿°',width:100,halign:"center", align:"left"},
-            {field:'activities_description',title:'ç¤¾å›¢å›¾ç‰‡',width:100,halign:"center", align:"left"},
-           
+            {field:'club_name',title:'ÉçÍÅÃû³Æ',width:100,halign:"center", align:"left"},
+			{field:'settime',title:'ÉçÍÅ³ÉÁ¢Ê±¼äÊ±¼ä',width:100,halign:"center", align:"left"},
+			{field:'clubdesc',title:'ÉçÍÅÃèÊö',width:100,halign:"center", align:"left"},
+            {field:'clubimage',title:'ÉçÍÅÍ¼Æ¬',width:100,halign:"center", align:"left"},
+            {field:'clubemail',title:'ÉçÍÅÓÊÏä',width:100,halign:"center", align:"left"},
+            {field:'clubman',title:'ÉçÍÅ¸ºÔğÈË',width:100,halign:"center", align:"left"},
+            {field:'clubmantel',title:'ÉçÍÅ¸ºÔğÈËµç»°',width:100,halign:"center", align:"left"},
 		]],
 		toolbar:'#tt_btn',  
         pagination:true,
@@ -41,39 +42,39 @@ $(function(){
 		}
 	});
 	
-	//æ–°å¢å¼¹å‡ºæ¡†
+	//ĞÂÔöµ¯³ö¿ò
 	$("#save").on("click", function(){
 		$parent("#parent_win").window({
 			width:274,
 			height:225,
 			href:'xiugaishetuan.html',
-			title:'æ–°å¢æ´»åŠ¨'
+			title:'ĞÂÔö»î¶¯'
 		});
 	});
-	//ä¿®æ”¹
+	//ĞŞ¸Ä
 	$("#update").on("click", function(){
 		$parent("#parent_win").window({
 			width:274,
 			height:225,
 			href:'xiugaishetuan.html',
-			title:'ä¿®æ”¹ç¤¾å›¢ä¿¡æ¯'
+			title:'ĞŞ¸ÄÉçÍÅĞÅÏ¢'
 		});
 	});
-	//åˆ é™¤
+	//É¾³ı
 	$("#delete").on("click", function(){
-		$parent.messager.alert("æç¤º","delete", "info");
+		$parent.messager.alert("ÌáÊ¾","delete", "info");
 	});
 })
 
 function viewDetail(date, id){
-	$parent.messager.alert("æç¤º","æŸ¥è¯¢è¯¦ç»†", "info");
+	$parent.messager.alert("ÌáÊ¾","²éÑ¯ÏêÏ¸", "info");
 }
 
-//ç›‘å¬çª—å£å¤§å°å˜åŒ–
+//¼àÌı´°¿Ú´óĞ¡±ä»¯
 window.onresize = function(){
 	setTimeout(domresize,300);
 };
-//æ”¹å˜è¡¨æ ¼å®½é«˜
+//¸Ä±ä±í¸ñ¿í¸ß
 function domresize(){
 	$('#tt').datagrid('resize',{  
 		height:$("#body").height()-$('#search_area').height()-5,
@@ -85,12 +86,12 @@ function domresize(){
 <body class="easyui-layout" >
 <div id="body" region="center" > 
  
-  <!-- æ•°æ®è¡¨æ ¼åŒºåŸŸ -->
+  <!-- Êı¾İ±í¸ñÇøÓò -->
   <table id="tt" style="table-layout:fixed;" ></table>
-  <!-- è¡¨æ ¼é¡¶éƒ¨å·¥å…·æŒ‰é’® -->
+  <!-- ±í¸ñ¶¥²¿¹¤¾ß°´Å¥ -->
   <div id="tt_btn">
       
-      <a href="xiugaishetuan.html"  id="update" class="easyui-linkbutton" iconCls="icon-edit" plain="true">ä¿®æ”¹</a> 
+      <a href="xiugaishetuan.html"  id="update" class="easyui-linkbutton" iconCls="icon-edit" plain="true">ĞŞ¸Ä</a> 
       
    </div>
 </div>

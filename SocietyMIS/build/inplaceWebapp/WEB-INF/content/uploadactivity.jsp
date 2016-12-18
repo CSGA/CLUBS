@@ -33,7 +33,7 @@ body{font:normal 15px/1.5 Arial, Helvetica, Free Sans, sans-serif;color: #222;ba
 
     <!-- Begin Form -->
 
-    <form id="my-form" action="union_addactivity">
+    <form id="my-form" action="activity_addactivity">
 
         <section name="上传活动信息">
 

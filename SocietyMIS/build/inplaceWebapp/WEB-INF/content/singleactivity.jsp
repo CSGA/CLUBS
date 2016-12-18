@@ -76,7 +76,7 @@
     </header> <!-- .site-header -->
    
     <!-- TOP CONTENT -->
-    <s:iterator value="#session.activity" id="activity1">
+    <s:iterator value="#session.activitys" id="activity2">
     <div class="top-c">
         <div class="container">
             <div class="row">
@@ -88,9 +88,12 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <h3 class="topc-title"><s:property value="#activity1.actname"/></h3>
                     <ul>
+                        <li><i class="fa fa-check"></i>举办单位：<s:property value="#activity2.club_name"/></li>
+                        </s:iterator>
+                        <s:iterator value="#session.activity" id="activity1">
                         <li><i class="fa fa-check"></i>活动时间: <s:property value="#activity1.acttime"/></li>
                         <li><i class="fa fa-check"></i>活动地点: <s:property value="#activity1.actlocation"/></li>
-                        <li><i class="fa fa-check"></i>举办单位：中国矿业大学舞蹈协会</li>
+                        
                         
                     </ul>
                 </div>
@@ -98,7 +101,7 @@
             </div>
         </div>
     </div>
- </s:iterator>
+ 
 
     <!-- SERVICES -->
     <div class="content-section" id="services">
@@ -109,7 +112,7 @@
                         <div class="service-icon">
                             <i class="fa fa-video-camera"></i>
                         </div>
-                        <a href=''><h3 class="service-title">返回上一页</h3></a>
+                        <a href=index'><h3 class="service-title">返回上一页</h3></a>
                     </div> <!-- .service-item -->
                 </div> <!-- .col-md-3 -->
                 <div class="col-md-3 col-xs-6 text-center">
@@ -117,7 +120,7 @@
                         <div class="service-icon">
                             <i class="fa fa-desktop"></i>
                         </div>
-                        <a href=''><h3 class="service-title">我要报名</h3></a>
+                        <a href='activity_actjoin?students_id=${session.user.students_id}&activity_id=<s:property value="#activity1.activity_id"/>&club_id=<s:property value="#activity1.club_id"/>'><h3 class="service-title">${requestScope.tip}报名</h3></a>
                     </div> <!-- .service-item -->
                 </div> <!-- .col-md-3 -->
                 <div class="col-md-3 col-xs-6 text-center">
@@ -132,12 +135,17 @@
             </div> <!-- .row -->
         </div> <!-- .container -->
     </div> <!-- #services -->
-
+</s:iterator>
     
    
     
     
-
+    <script>
+   var errorMsg="${requestScope.errorMessage}";
+   if(errorMsg!=""){
+     alert(errorMsg);
+   }
+</script>
     <script src="js/vendor/jquery-1.10.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
     

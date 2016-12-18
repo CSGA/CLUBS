@@ -1,10 +1,10 @@
-ï»¿<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
+<%@ page contentType="text/html; charset=GBK" language="java" errorPage="" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ç®¡ç†ä¼šå‘˜</title>
+<title>¹ÜÀí»áÔ±</title>
 <link rel="stylesheet" type="text/css" href="css/default.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/gray/easyui.css">
 <link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.3.5/themes/icon.css" />
@@ -20,19 +20,20 @@ $(function(){
 		width:$("#body").width(),
 		idField:'userId',
 		//data: data,
-		url:"datagrid.json",  
+		url:"jsd/getjoinstudents?club_id=${session.club.club_id}",  
 		singleSelect:true, 
 		nowrap:true,
 		fitColumns:true,
 		rownumbers:true,
 		showPageList:false,
 		columns:[[
-			{field:'activities_id',title:'å§“å',width:100,halign:"center", align:"left"},
-            {field:'activities_name',title:'æ€§åˆ«',width:100,halign:"center", align:"left"},
-			{field:'activities_time',title:'å­¦å·',width:100,halign:"center", align:"left"},
-			{field:'activities_place',title:'æ‰‹æœºå·',width:100,halign:"center", align:"left"},
-            {field:'activities_description',title:'å­¦é™¢',width:100,halign:"center", align:"left"},
-            {field:'activities',title:'ç­çº§',width:100,halign:"center", align:"left"},
+			{field:'students_name',title:'ĞÕÃû',width:100,halign:"center", align:"left"},
+            {field:'students_sex',title:'ĞÔ±ğ',width:100,halign:"center", align:"left"},
+			{field:'students_id',title:'Ñ§ºÅ',width:100,halign:"center", align:"left"},
+			{field:'students_tel',title:'ÊÖ»úºÅ',width:100,halign:"center", align:"left"},
+            {field:'students_school',title:'Ñ§Ôº',width:100,halign:"center", align:"left"},
+            {field:'students_class',title:'°à¼¶',width:100,halign:"center", align:"left"},
+            {field:'students_email',title:'ÓÊÏä',width:100,halign:"center", align:"left"},
 		]],
 		toolbar:'#tt_btn',  
         pagination:true,
@@ -41,34 +42,34 @@ $(function(){
 		}
 	});
 	
-	//æ–°å¢å¼¹å‡ºæ¡†
+	//ĞÂÔöµ¯³ö¿ò
 	$("#save").on("click", function(){
 		$parent("#parent_win").window({
 			width:274,
 			height:225,
 			href:'user/addUser.html',
-			title:'æ–°å¢æ´»åŠ¨'
+			title:'ĞÂÔö»î¶¯'
 		});
 	});
-	//ä¿®æ”¹
+	//ĞŞ¸Ä
 	$("#update").on("click", function(){
-		$parent.messager.alert("æç¤º","update", "info");
+		$parent.messager.alert("ÌáÊ¾","update", "info");
 	});
-	//åˆ é™¤
+	//É¾³ı
 	$("#delete").on("click", function(){
-		$parent.messager.alert("æç¤º","delete", "info");
+		$parent.messager.alert("ÌáÊ¾","delete", "info");
 	});
 })
 
 function viewDetail(date, id){
-	$parent.messager.alert("æç¤º","æŸ¥è¯¢è¯¦ç»†", "info");
+	$parent.messager.alert("ÌáÊ¾","²éÑ¯ÏêÏ¸", "info");
 }
 
-//ç›‘å¬çª—å£å¤§å°å˜åŒ–
+//¼àÌı´°¿Ú´óĞ¡±ä»¯
 window.onresize = function(){
 	setTimeout(domresize,300);
 };
-//æ”¹å˜è¡¨æ ¼å®½é«˜
+//¸Ä±ä±í¸ñ¿í¸ß
 function domresize(){
 	$('#tt').datagrid('resize',{  
 		height:$("#body").height()-$('#search_area').height()-5,
@@ -80,11 +81,12 @@ function domresize(){
 <body class="easyui-layout" >
 <div id="body" region="center" > 
  
-  <!-- æ•°æ®è¡¨æ ¼åŒºåŸŸ -->
+  <!-- Êı¾İ±í¸ñÇøÓò -->
   <table id="tt" style="table-layout:fixed;" ></table>
-  <!-- è¡¨æ ¼é¡¶éƒ¨å·¥å…·æŒ‰é’® -->
+  <!-- ±í¸ñ¶¥²¿¹¤¾ß°´Å¥ -->
   <div id="tt_btn">
-      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">åˆ é™¤</a>
+     <a href="user_tellmen?club_id=${session.club.club_id}"   class="easyui-linkbutton" iconCls="icon-remove" plain="true">Í¨Öª±¨ÃûÍ¬Ñ§</a>
+      <a href="javascript:void(0)"  id="delete" class="easyui-linkbutton" iconCls="icon-remove" plain="true">É¾³ı</a>
    </div>
 </div>
 </body>

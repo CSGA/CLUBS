@@ -19,8 +19,8 @@
 
 <body class="easyui-layout">
 <!-- 头部标题 -->
-<div data-options="region:'north',border:false" style="height:60px; padding:5px; background:#F3F3F3"> 
-	<center><p><font size="8">社联后台</font></p></center>
+<div data-options="region:'north',border:false" style="height:55px; padding:1px; background:#F3F3F3"> 
+	<center><p><font size="6">社团联合会后台管理系统</font></p></center>
 </div>
 
 <!-- 左侧导航 -->
@@ -39,7 +39,9 @@
 <div id="center" data-options="region:'center'">
   <div id="tabs" class="easyui-tabs">
     <div title="首页" style="padding:5px;display:block;vertical-align:middle;" >
-             <center><p><font size="15">欢迎进入社联后台系统!</font></p></center>
+             <center>
+             <img src="images/shelian.png"/>
+             <p><font size="6">欢迎进入社联后台系统!</font></p></center>
         
     </div>
   </div>

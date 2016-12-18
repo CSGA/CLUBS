@@ -75,21 +75,21 @@
     </header> <!-- .site-header -->
     
     <!-- TOP CONTENT -->
-    <s:iterator value="#session.union" id="activity">
+    <s:iterator value="#session.union" id="club">
     <div class="top-c">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-1 col-lg-5 col-md-5 col-xs-offset-1 col-sm-5 col-xs-8 col-xs-offset-2">
                     <div class="topc-img">
                         <h1>社团详情</h1>
-                        <img src="<s:property value="#activity.clubimage"/>" alt="嘉荷文学社">
+                        <img src="<s:property value="#club.clubimage"/>" alt="嘉荷文学社">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <h3 class="topc-title"><s:property value="#activity.club_name"/></h3>
+                    <h3 class="topc-title"><s:property value="#club.club_name"/></h3>
                     <ul>
-                        <li><i class="fa fa-check"></i>成立时间：<s:property value="#activity.settime"/></li>
-                        <li><i class="fa fa-check"></i>社团描述：<s:property value="#activity.clubdesc"/></i>
+                        <li><i class="fa fa-check"></i>成立时间：<s:property value="#club.settime"/></li>
+                        <li><i class="fa fa-check"></i>社团描述：<s:property value="#club.clubdesc"/></i>
                       
                         
                     </ul>
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-</s:iterator>
+
 
     <!-- SERVICES -->
     <div class="content-section" id="services">
@@ -117,7 +117,7 @@
                         <div class="service-icon">
                             <i class="fa fa-desktop"></i>
                         </div>
-                        <a href='singleclub'><h3 class="service-title">我要报名</h3></a>
+                        <a href='activity_applyclub?students_id=${session.user.students_id}&club_id=<s:property value="#club.club_id"/>'><h3 class="service-title">${requestScope.tip}参加该社团</h3></a>
                     </div> <!-- .service-item -->
                 </div> <!-- .col-md-3 -->
                 <div class="col-md-3 col-xs-6 text-center">
@@ -132,11 +132,16 @@
             </div> <!-- .row -->
         </div> <!-- .container -->
     </div> <!-- #services -->
-
+</s:iterator>
     
    
     
-    
+     <script>
+        var errorMsg="${requestScope.errorMessage}";
+        if(errorMsg!=""){
+        alert(errorMsg);
+        }
+    </script>
 
     <script src="js/vendor/jquery-1.10.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
